@@ -47,7 +47,6 @@ export default function AddressPage() {
       line1: address.line1,
       line2: address.line2,
       city: address.city,
-      county: address.county,
       postcode: address.postcode,
       lived_3_years: lived3Years,
     };
@@ -60,7 +59,6 @@ export default function AddressPage() {
       line1: address.line1,
       line2: address.line2,
       city: address.city,
-      county: address.county,
       postcode: address.postcode,
       lived_3_years: true, // Assuming previous address was lived in
     };
@@ -165,9 +163,9 @@ export default function AddressPage() {
                 line1: currentAddress.line1,
                 line2: currentAddress.line2,
                 city: currentAddress.city,
-                county: currentAddress.county,
                 postcode: currentAddress.postcode,
-              } as MockAddress : undefined}
+                formatted: `${currentAddress.line1}${currentAddress.line2 ? ', ' + currentAddress.line2 : ''}, ${currentAddress.city}, ${currentAddress.postcode}`,
+              } : undefined}
             />
             {errors.current && (
               <p className="text-sm text-destructive">{errors.current}</p>
@@ -222,9 +220,9 @@ export default function AddressPage() {
                   line1: previousAddress.line1,
                   line2: previousAddress.line2,
                   city: previousAddress.city,
-                  county: previousAddress.county,
                   postcode: previousAddress.postcode,
-                } as MockAddress : undefined}
+                  formatted: `${previousAddress.line1}${previousAddress.line2 ? ', ' + previousAddress.line2 : ''}, ${previousAddress.city}, ${previousAddress.postcode}`,
+                } : undefined}
               />
               {errors.previous && (
                 <p className="text-sm text-destructive">{errors.previous}</p>

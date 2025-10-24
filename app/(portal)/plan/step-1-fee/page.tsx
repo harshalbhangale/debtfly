@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, Calculator, FileText, CheckCircle2, Phone, Info } from 'lucide-react';
+import { ArrowLeft, Calculator, CheckCircle2, Phone, Info } from 'lucide-react';
 import { getTotalDebtAmount } from '@/lib/storage/public-onboarding';
 import { calculateFee, formatCurrency } from '@/lib/calculations/fee';
 import { toast } from 'sonner';

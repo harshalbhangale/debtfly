@@ -12,7 +12,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, AlertCircle, Info, Shield } from 'lucide-react';
+import { ArrowLeft, AlertCircle, Shield } from 'lucide-react';
 import { formatCurrency } from '@/lib/calculations/fee';
 import { toast } from 'sonner';
 
@@ -126,7 +126,7 @@ export default function Step2ADetailedIEPage() {
     setTotalDetailedExpenses(total);
   }, [formData]);
 
-  const handleChange = (field: keyof DetailedIE, value: any) => {
+  const handleChange = (field: keyof DetailedIE, value: string | number | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -461,7 +461,7 @@ export default function Step2ADetailedIEPage() {
                   I have an emergency fund or savings
                 </Label>
                 <p className="text-sm text-muted-foreground">
-                  At least 1 month's expenses saved
+                  At least 1 month&apos;s expenses saved
                 </p>
               </div>
             </div>

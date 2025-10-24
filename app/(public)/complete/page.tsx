@@ -8,8 +8,7 @@ import {
   markPublicOnboardingComplete,
   getContactInfo,
   getTotalDebtAmount,
-  getCreditorCount,
-  getPublicOnboardingData
+  getCreditorCount
 } from '@/lib/storage/public-onboarding';
 import { sendMagicLinkEmail } from '@/lib/auth/magic-link';
 

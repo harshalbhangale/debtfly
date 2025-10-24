@@ -243,7 +243,7 @@ export function isPublicOnboardingComplete(): boolean {
 export function validateCreditorSelection(): boolean {
   const selection = getCreditorSelection();
   if (!selection) return false;
-  return selection.selected_creditor_ids.length > 0 || (selection.other_creditors && selection.other_creditors.length > 0);
+  return selection.selected_creditor_ids.length > 0 || !!(selection.other_creditors && selection.other_creditors.length > 0);
 }
 
 export function validateContactInfo(): boolean {
