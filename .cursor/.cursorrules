@@ -1,0 +1,150 @@
+# Debtfly Frontend Development Rules
+
+## Design System
+
+### Color Palette (Purple/Lime Theme - Light Mode)
+- Primary: #7F6DF2 (Purple) - Main brand color, CTAs, links
+- Primary Light: #9688F2 (Light Purple) - Hover states, backgrounds
+- Accent: #BFF207 (Bright Lime) - Attention, highlights, success actions
+- Accent Light: #D7F205 (Light Lime) - Subtle highlights, badges
+- Dark: #014034 (Dark Teal) - Text, headings, emphasis
+- Background: #FFFFFF (White) - Main background
+- Border: #E5E7EB (Light Gray) - Default borders
+- Surface: #F9FAFB (Off-white) - Cards, elevated surfaces
+
+### Typography
+- Font Family: Poppins (imported from @fontsource/poppins)
+- Headings: font-bold (700), font-semibold (600)
+- Body: font-normal (400), font-medium (500)
+- Always use Poppins for consistency
+
+### Component Patterns
+1. **Reusability First**: Create reusable components in `components/shared/` for common patterns
+2. **Consistent Spacing**: Use Tailwind spacing scale (p-4, p-6, gap-4, etc.)
+3. **Border Radius**: Use rounded-lg for cards, rounded-full for buttons
+4. **Shadows**: Use subtle shadows - shadow-sm for cards, shadow-md for modals
+5. **Transitions**: Add transition-all duration-200 for smooth interactions
+
+### Status Colors (Debt Stages)
+- awaiting_signup: Gray (#F3F4F6, #6B7280, #D1D5DB)
+- disclosure_requested: Blue (#DBEAFE, #1E40AF, #93C5FD)
+- temporarily_unenforceable: Yellow (#FEF3C7, #92400E, #FCD34D)
+- under_review: Indigo (#E0E7FF, #3730A3, #A5B4FC)
+- enforceable: Red (#FEE2E2, #991B1B, #FCA5A5)
+- permanently_unenforceable: Green (#D1FAE5, #065F46, #6EE7B7)
+- written_off: Gray (#F3F4F6, #374151, #D1D5DB)
+
+### Responsive Design
+- Mobile-first approach
+- Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
+- Always test on mobile, tablet, and desktop
+- Use flex and grid for layouts
+
+### Accessibility
+- Use semantic HTML (header, nav, main, footer, article, section)
+- Add ARIA labels to interactive elements
+- Ensure proper keyboard navigation (Tab, Enter, Esc)
+- Maintain WCAG AA color contrast
+- Use lucide-react icons with proper aria-hidden="true"
+
+## Code Style
+
+### TypeScript
+- Always use TypeScript for type safety
+- Define interfaces for all data structures
+- Use strict mode
+- Prefer `interface` over `type` for objects
+- Export types from `lib/types/`
+
+### React/Next.js
+- Use 'use client' directive for client components
+- Prefer function components with hooks
+- Keep components small and focused (< 200 lines)
+- Extract logic into custom hooks in `hooks/`
+- Use React Query for data fetching
+
+### File Organization
+```
+app/                    # Next.js app directory (routes)
+components/
+  ├── shared/          # Reusable components
+  ├── onboarding/      # Onboarding-specific components
+  ├── dashboard/       # Dashboard-specific components
+  ├── auth/            # Auth components
+  └── ui/              # shadcn/ui components
+lib/
+  ├── api/             # API services
+  ├── types/           # TypeScript types
+  ├── storage/         # LocalStorage utilities
+  ├── mock-data/       # Mock data generators
+  └── design-tokens.ts # Design system tokens
+hooks/                 # Custom React hooks
+```
+
+### Naming Conventions
+- Components: PascalCase (e.g., `DebtTile.tsx`)
+- Files: kebab-case for pages (e.g., `qualifying-questions.tsx`)
+- Functions: camelCase (e.g., `calculateFee`)
+- Constants: UPPER_SNAKE_CASE (e.g., `MAX_FEE`)
+- CSS classes: Use Tailwind utilities, not custom CSS
+
+## Mock Data
+- All mock data goes in `lib/mock-data/`
+- Clearly mark mock functions with comments
+- Make mock responses realistic
+- Use setTimeout to simulate API delays (300-1000ms)
+- Structure mock data to match backend DB schema
+
+## State Management
+- Use React Query for server state
+- Use localStorage for onboarding progress
+- Use React Context sparingly (only for truly global state)
+- Keep component state local when possible
+
+## Forms
+- Use react-hook-form for all forms
+- Use zod for validation schemas
+- Show inline error messages below fields
+- Disable submit button while loading
+- Clear error on field change
+
+## Best Practices
+1. **DRY**: Don't repeat yourself - extract common patterns
+2. **Component Composition**: Build complex UIs from simple components
+3. **Props over State**: Pass data down, not up
+4. **Meaningful Names**: Use descriptive variable and function names
+5. **Comments**: Add comments for complex logic, not obvious code
+6. **Error Handling**: Always handle errors gracefully with user-friendly messages
+7. **Loading States**: Show skeletons or spinners during data loading
+8. **Empty States**: Show helpful messages when no data exists
+
+## UI Patterns to Follow
+- Buttons: Primary (purple), Secondary (outline), Destructive (red)
+- Inputs: White background, gray border, purple focus ring
+- Cards: White background, subtle shadow, rounded-lg
+- Modals: Center screen, backdrop blur, smooth animation
+- Toasts: sonner library, top-right position
+- Progress bars: Purple fill, gray background
+
+## Never Do
+- Don't use inline styles (use Tailwind classes)
+- Don't create custom CSS files (extend Tailwind config instead)
+- Don't hardcode colors (use design tokens)
+- Don't skip error handling
+- Don't forget loading states
+- Don't ignore TypeScript errors
+- Don't mix font families (only Poppins)
+- Don't use non-semantic HTML (avoid div soup)
+
+## Always Do
+- Import Poppins font in layout
+- Use design tokens from `lib/design-tokens.ts`
+- Add proper TypeScript types
+- Handle loading and error states
+- Make components responsive
+- Add accessibility attributes
+- Write clean, readable code
+- Follow the file organization structure
+- Create reusable components
+- Document complex logic
+
